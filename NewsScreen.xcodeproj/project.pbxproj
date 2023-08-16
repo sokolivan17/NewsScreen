@@ -12,6 +12,7 @@
 		B50A2DB02A8CCA8C00079DD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A2DAF2A8CCA8C00079DD3 /* ViewController.swift */; };
 		B50A2DB52A8CCA8D00079DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B50A2DB42A8CCA8D00079DD3 /* Assets.xcassets */; };
 		B50A2DB82A8CCA8D00079DD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50A2DB62A8CCA8D00079DD3 /* LaunchScreen.storyboard */; };
+		B50A2DC02A8CCD2D00079DD3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A2DBF2A8CCD2D00079DD3 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		B50A2DB42A8CCA8D00079DD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B50A2DB72A8CCA8D00079DD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B50A2DB92A8CCA8D00079DD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B50A2DBF2A8CCD2D00079DD3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				B50A2DAB2A8CCA8C00079DD3 /* AppDelegate.swift */,
 				B50A2DAD2A8CCA8C00079DD3 /* SceneDelegate.swift */,
 				B50A2DAF2A8CCA8C00079DD3 /* ViewController.swift */,
+				B50A2DBF2A8CCD2D00079DD3 /* NetworkService.swift */,
 				B50A2DB42A8CCA8D00079DD3 /* Assets.xcassets */,
 				B50A2DB62A8CCA8D00079DD3 /* LaunchScreen.storyboard */,
 				B50A2DB92A8CCA8D00079DD3 /* Info.plist */,
@@ -136,6 +139,7 @@
 			files = (
 				B50A2DB02A8CCA8C00079DD3 /* ViewController.swift in Sources */,
 				B50A2DAC2A8CCA8C00079DD3 /* AppDelegate.swift in Sources */,
+				B50A2DC02A8CCD2D00079DD3 /* NetworkService.swift in Sources */,
 				B50A2DAE2A8CCA8C00079DD3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
