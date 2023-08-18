@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import SafariServices
 
 class NewsViewController: UIViewController {
 
     // MARK: - Properties
+    private var articles = [Article]()
+    private var viewModels = [NewsTableViewCellViewModel]()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -18,9 +22,6 @@ class NewsViewController: UIViewController {
         tableView.delegate = self
         return tableView
     }()
-
-    private var articles = [Article]()
-    private var viewModels = [NewsTableViewCellViewModel]()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -68,11 +69,20 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let article = articles[indexPath.row]
+
+        guard let url = URL(string: article.url ?? "") else { return }
+
+        let viewController = SFSafariViewController(url: url)
+        present(viewController, animated: true)
+
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TableViewConstants.rowHeight
     }
+
+    
 }
 
 // MARK: - Network
@@ -84,13 +94,10 @@ extension NewsViewController {
                 self?.articles = articles
                 self?.viewModels = articles.compactMap({
                     NewsTableViewCellViewModel(title: $0.title,
-                                               subtitle: $0.description ?? "Press on the news to see description",
+                                               subtitle: $0.description ?? TableViewConstants.subtitleDescription,
                                                imageURL: URL(string: $0.urlToImage ?? ""))
                 })
-
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -101,4 +108,5 @@ extension NewsViewController {
 // MARK: - Enums
 enum TableViewConstants {
     static let rowHeight: CGFloat = 150
+    static let subtitleDescription: String = "Press on the news to see description"
 }

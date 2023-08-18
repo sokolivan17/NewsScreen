@@ -60,17 +60,97 @@
 		B50A2DAA2A8CCA8C00079DD3 /* NewsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B50A2DAB2A8CCA8C00079DD3 /* AppDelegate.swift */,
-				B50A2DAD2A8CCA8C00079DD3 /* SceneDelegate.swift */,
-				B50A2DAF2A8CCA8C00079DD3 /* NewsViewController.swift */,
-				B50A2DC32A8CD38A00079DD3 /* NewsTableViewCell.swift */,
-				B50A2DC52A8CD42500079DD3 /* NewsTableViewCellViewModel.swift */,
-				B50A2DBF2A8CCD2D00079DD3 /* NetworkService.swift */,
-				B50A2DB42A8CCA8D00079DD3 /* Assets.xcassets */,
-				B50A2DB62A8CCA8D00079DD3 /* LaunchScreen.storyboard */,
-				B50A2DB92A8CCA8D00079DD3 /* Info.plist */,
+				B50A2DCC2A8F99F100079DD3 /* Sources */,
+				B50A2DC92A8F99D500079DD3 /* Resources */,
 			);
 			path = NewsScreen;
+			sourceTree = "<group>";
+		};
+		B50A2DC72A8F99C100079DD3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DAB2A8CCA8C00079DD3 /* AppDelegate.swift */,
+				B50A2DAD2A8CCA8C00079DD3 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B50A2DC82A8F99CB00079DD3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DCF2A8F9B1000079DD3 /* View */,
+				B50A2DCE2A8F9B0800079DD3 /* Model */,
+				B50A2DD02A8F9B1600079DD3 /* Controller */,
+				B50A2DCD2A8F9AF000079DD3 /* NetworkService */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		B50A2DC92A8F99D500079DD3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DB42A8CCA8D00079DD3 /* Assets.xcassets */,
+				B50A2DCA2A8F99DF00079DD3 /* Storyboards */,
+				B50A2DCB2A8F99E900079DD3 /* Configs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B50A2DCA2A8F99DF00079DD3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DB62A8CCA8D00079DD3 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B50A2DCB2A8F99E900079DD3 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DB92A8CCA8D00079DD3 /* Info.plist */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		B50A2DCC2A8F99F100079DD3 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DC72A8F99C100079DD3 /* App */,
+				B50A2DC82A8F99CB00079DD3 /* Scenes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B50A2DCD2A8F9AF000079DD3 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DBF2A8CCD2D00079DD3 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		B50A2DCE2A8F9B0800079DD3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DC52A8CD42500079DD3 /* NewsTableViewCellViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B50A2DCF2A8F9B1000079DD3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DC32A8CD38A00079DD3 /* NewsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B50A2DD02A8F9B1600079DD3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B50A2DAF2A8CCA8C00079DD3 /* NewsViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +369,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H87TDKA3ZG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsScreen/Info.plist;
+				INFOPLIST_FILE = NewsScreen/Resources/Configs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -316,7 +396,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H87TDKA3ZG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsScreen/Info.plist;
+				INFOPLIST_FILE = NewsScreen/Resources/Configs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
