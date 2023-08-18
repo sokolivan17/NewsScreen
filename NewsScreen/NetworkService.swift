@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Model
 struct NetworkResponse: Codable {
     let articles: [Article]
 }
@@ -24,17 +25,14 @@ struct Source: Codable {
     let name: String
 }
 
-struct Constants {
-    static let topHeadlinesURL = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=38f7df66943348baa716610ee92c049a")
-}
-
+// MARK: - NetworkService
 final class NetworkService {
     static let shared = NetworkService()
 
     private init() {}
 
     public func getTopStories(completion: @escaping (Result<[Article], Error>) -> Void) {
-        guard let url = Constants.topHeadlinesURL else { return }
+        guard let url = NetworkServiceConstants.topHeadlinesURL else { return }
 
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
@@ -54,4 +52,9 @@ final class NetworkService {
 
         task.resume()
     }
+}
+
+// MARK: - Enums
+enum NetworkServiceConstants {
+    static let topHeadlinesURL = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=38f7df66943348baa716610ee92c049a")
 }
