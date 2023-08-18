@@ -71,7 +71,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return TableViewConstants.rowHeight
     }
 }
 
@@ -84,7 +84,7 @@ extension NewsViewController {
                 self?.articles = articles
                 self?.viewModels = articles.compactMap({
                     NewsTableViewCellViewModel(title: $0.title,
-                                               subtitle: $0.description ?? "No description",
+                                               subtitle: $0.description ?? "Press on the news to see description",
                                                imageURL: URL(string: $0.urlToImage ?? ""))
                 })
 
@@ -96,4 +96,9 @@ extension NewsViewController {
             }
         }
     }
+}
+
+// MARK: - Enums
+enum TableViewConstants {
+    static let rowHeight: CGFloat = 150
 }

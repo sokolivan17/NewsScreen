@@ -60,16 +60,21 @@ class NewsTableViewCell: UITableViewCell {
 
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            newsTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            newsTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            newsTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            newsTitleLabel.heightAnchor.constraint(equalToConstant: 20),
+            newsTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellConstants.paddingConstant),
+            newsTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellConstants.paddingConstant),
+            newsTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellConstants.paddingConstant),
+            newsTitleLabel.heightAnchor.constraint(equalToConstant: CellConstants.newsTitleLabelHeight),
 
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            subtitleLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 10),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellConstants.paddingConstant),
+            subtitleLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: CellConstants.paddingConstant),
+            subtitleLabel.widthAnchor.constraint(equalToConstant: contentView.frame.width / 2 + CellConstants.subtitleLabelWidthPadding),
+            subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -CellConstants.paddingConstant),
 
+            newsImageView.leadingAnchor.constraint(equalTo: subtitleLabel.trailingAnchor, constant: CellConstants.paddingConstant),
+            newsImageView.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: CellConstants.paddingConstant),
+            newsImageView.heightAnchor.constraint(equalToConstant:
+                                                    TableViewConstants.rowHeight  - (3 * CellConstants.paddingConstant + CellConstants.newsTitleLabelHeight)),
+            newsImageView.widthAnchor.constraint(equalTo: newsImageView.heightAnchor, multiplier: 1.65),
         ])
     }
 
@@ -77,6 +82,20 @@ class NewsTableViewCell: UITableViewCell {
     func configure(with viewModel: NewsTableViewCellViewModel) {
         newsTitleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
+
+        if let data = viewModel.imageData {
+            newsImageView.image = UIImage(data: data)
+        } else if let  url = viewModel.imageURL {
+
+            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                guard let data = data, error == nil else { return }
+
+                viewModel.imageData = data
+                DispatchQueue.main.async {
+                    self?.newsImageView.image = UIImage(data: data)
+                }
+            }.resume()
+        }
     }
 
     // MARK: - Reuse
@@ -88,3 +107,9 @@ class NewsTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - Enums
+enum CellConstants {
+    static let newsTitleLabelHeight: CGFloat = 20
+    static let paddingConstant: CGFloat = 10
+    static let subtitleLabelWidthPadding: CGFloat = 40
+}
