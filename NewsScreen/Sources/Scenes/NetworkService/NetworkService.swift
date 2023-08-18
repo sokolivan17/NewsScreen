@@ -43,7 +43,9 @@ final class NetworkService {
                     let result = try JSONDecoder().decode(NetworkResponse.self, from: data)
 
                     print("Articles: \(result.articles.count)")
-                    completion(.success(result.articles))
+                    DispatchQueue.main.async {
+                        completion(.success(result.articles))
+                    }
                 } catch {
                     completion(.failure(error))
                 }
